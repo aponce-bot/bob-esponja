@@ -1,0 +1,457 @@
+/* ==========================================================
+   BOB ESPONJA · Fondo de Bikini
+   Índice:
+   1. Variables (colores y modo oscuro)
+   2. Base
+   3. Navegación
+   4. Botones y formularios
+   5. Portada (hero)
+   6. Secciones: historia, amigos, juegos
+   7. Fotos
+   8. Burbujas y pie de página
+   9. Responsive y accesibilidad
+   10. Ajustes de diseño
+   ========================================================== */
+
+
+/* ---------- 1. VARIABLES ---------- */
+:root {
+  /* Colores del modo claro */
+  --sea: #bfeaf2;
+  --sea2: #8fd3e3;
+  --deep: #0b4f6c;
+  --sand: #f6e3a8;
+  --sponge: #ffd92e;
+  --ink: #16323d;
+  --card: #ffffff;
+  --pants: #8a5a2b;
+  --coral: #ff6f59;
+  --line: #0b4f6c33;
+
+  /* Respeta las barras del sistema en móviles */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Modo oscuro automático (según el sistema) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sea: #0a2a3a;
+    --sea2: #0f4258;
+    --deep: #9fe0f0;
+    --sand: #3a3320;
+    --ink: #e6f6fa;
+    --card: #123a4d;
+    --line: #9fe0f033;
+  }
+}
+
+/* Modo oscuro manual (botón de la barra) */
+:root[data-theme="dark"] {
+  --sea: #0a2a3a;
+  --sea2: #0f4258;
+  --deep: #9fe0f0;
+  --sand: #3a3320;
+  --ink: #e6f6fa;
+  --card: #123a4d;
+  --line: #9fe0f033;
+}
+
+
+/* ---------- 2. BASE ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: auto;
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--sea);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: 'Bagel Fat One', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  color: var(--deep);
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.lead {
+  max-width: 60ch;
+}
+
+section {
+  padding: 56px 0;
+}
+
+section.sand {
+  background: var(--sand);
+}
+
+
+/* ---------- 3. NAVEGACIÓN ---------- */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  padding: 8px 0;
+  background: var(--sponge);
+  border-bottom: 4px solid var(--pants);
+}
+
+nav .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+nav .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+nav a {
+  padding: 4px 10px;
+  border-radius: 99px;
+  color: #3b2a10;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: #fff8;
+  outline: none;
+}
+
+
+/* ---------- 4. BOTONES Y FORMULARIOS ---------- */
+button {
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 800;
+  color: #fff;
+  background: var(--coral);
+  border: 3px solid var(--pants);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 var(--pants);
+  cursor: pointer;
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--pants);
+}
+
+button.alt {
+  color: #3b2a10;
+  background: var(--sponge);
+}
+
+label {
+  display: block;
+  margin: 10px 0 4px;
+  font-weight: 800;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--sea);
+  border: 3px solid var(--line);
+  border-radius: 12px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--ink);
+  opacity: 0.55;
+}
+
+/* Foco visible para quien navega con teclado */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--deep);
+  outline-offset: 2px;
+}
+
+
+/* ---------- 5. PORTADA (HERO) ---------- */
+.hero {
+  position: relative;
+  padding: 48px 0 0;
+}
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  color: var(--deep);
+  transform: rotate(-180deg);
+}
+
+.hero p {
+  max-width: 44ch;
+  font-size: 1.15rem;
+}
+
+.hero .btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+/* Ola decorativa entre la portada y la historia */
+.waves {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-top: 20px;
+}
+
+
+/* ---------- 6. SECCIONES ---------- */
+
+/* Historia: línea de tiempo */
+.timeline {
+  margin: 28px 0 0;
+  padding: 0 0 0 28px;
+  list-style: none;
+  border-left: 5px dotted var(--deep);
+}
+
+.timeline li {
+  position: relative;
+  margin-bottom: 22px;
+  padding: 14px 18px;
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -43px;
+  top: 18px;
+  width: 20px;
+  height: 20px;
+  background: var(--sponge);
+  border: 4px solid var(--pants);
+  border-radius: 50%;
+}
+
+.timeline h3 {
+  font-size: 1.3rem;
+  color: var(--deep);
+}
+
+/* Amigos: cuadrícula de tarjetas */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.friend {
+  padding: 16px;
+  text-align: center;
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: 22px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.friend:hover {
+  transform: rotate(-180deg) scale(1.02);
+}
+
+/* Tarjeta resaltada por el buscador */
+.friend.hit {
+  border-color: var(--coral);
+  transform: scale(1.05);
+  box-shadow: 0 0 0 5px #ff6f5944;
+}
+
+.friend h3 {
+  margin-top: 6px;
+  font-size: 1.3rem;
+  color: var(--deep);
+}
+
+.friend p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+}
+
+/* Juegos: dos cajas lado a lado */
+.panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.box {
+  padding: 20px;
+  background: var(--card);
+  border: 3px solid var(--line);
+  border-radius: 22px;
+}
+
+.box h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: var(--deep);
+}
+
+/* Cuadro donde aparecen los resultados */
+.out {
+  min-height: 3.2em;
+  margin-top: 12px;
+  padding: 10px 12px;
+  font-weight: 700;
+  background: var(--sea);
+  border-radius: 12px;
+}
+
+.quote {
+  font-size: 1.25rem;
+}
+
+
+/* ---------- 7. FOTOS ---------- */
+.photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  overflow: hidden;
+  border: 3px solid var(--deep);
+  border-radius: 16px;
+  background: var(--sea);
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Foto grande de la portada */
+.hero-photo {
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  justify-self: center;
+  border-radius: 28px;
+  transform: rotate(2deg);
+}
+
+
+/* ---------- 8. BURBUJAS Y PIE DE PÁGINA ---------- */
+#bubbles {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bub {
+  position: absolute;
+  bottom: -40px;
+  background: #ffffff55;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  animation: up linear forwards;
+}
+
+@keyframes up {
+  to {
+    transform: translateY(-110vh) translateX(30px);
+  }
+}
+
+
+/* ---------- 9. RESPONSIVE Y ACCESIBILIDAD ---------- */
+@media (max-width: 720px) {
+  .hero .wrap,
+  .panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ---------- 10. AJUSTES DE DISEÑO ---------- */
+.logo {
+  color: #3b2a10;
+}
+
+.narrow {
+  max-width: 420px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.contact-box {
+  max-width: 560px;
+  margin-top: 20px;
+}
+
+.send {
+  margin-top: 14px;
+}

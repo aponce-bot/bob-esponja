@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bob Esponja · Fondo de Bikini</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Contenedor de las burbujas animadas -->
+<div id="bubbles" aria-hidden="true"></div>
+<!-- ===== NAVEGACIÓN ===== -->
+<nav>
+  <div class="wrap">
+    <strong class="logo">🧽 Fondo de Bikini</strong>
+    <div class="links">
+      <a href="#historia">Historia</a><a href="#amigos">Amigos</a><a href="#jugar">Juega</a><a href="#contacto">Escríbele</a>
+    </div>
+    <button class="alt" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro">Modo noche</button>
+  </div>
+</nav>
+
+<!-- ===== PORTADA ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>¡Bob Esponja!</h1>
+      <p>Vive en una piña debajo del mar, trabaja friendo cangreburgers y nunca deja de sonreír. Esta es su casa, la de sus amigos y la de sus peores (y mejores) días en Fondo de Bikini.</p>
+      <div class="btns">
+        <button type="button" id="burst">¡Soplar burbujas!</button>
+      </div>
+    </div>
+    <div class="photo hero-photo"><img src="images/bob.jpg" alt="Bob Esponja"></div>
+  </div>
+  <svg class="waves" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 Q75 0 150 30 T300 30 T450 30 T600 30 T750 30 T900 30 T1050 30 T1200 30 V60 H0Z" fill="var(--sand)"/></svg>
+</header>
+
+<!-- ===== HISTORIA ===== -->
+<section id="historia" class="sand">
+  <div class="wrap">
+    <h2>Su historia</h2>
+    <p class="lead">Bob Esponja Pantalones Cuadrados es una esponja de mar muy optimista que vive en una piña, en la ciudad submarina de Fondo de Bikini. Así es como llegó a ser el mejor cocinero de la Cangreburger.</p>
+    <ol class="timeline">
+      <li><h3>Una piña en el fondo del mar</h3><p>Bob vive en una piña con su mascota, el caracol Gary, que maúlla como un gato. Desde pequeño soñaba con tener un trabajo de verdad.</p></li>
+      <li><h3>El Crustáceo Cascarudo</h3><p>Consigue empleo como cocinero en el restaurante del señor Cangrejo. Para Bob, preparar hamburguesas no es un trabajo: es una vocación.</p></li>
+      <li><h3>La escuela de botes</h3><p>Su sueño es sacar la licencia de conducir, pero la señora Puff, su maestra, lleva años viendo cómo Bob lo intenta una y otra vez, con resultados desastrosos.</p></li>
+      <li><h3>Aventuras con Patricio</h3><p>Su mejor amigo y vecino es una estrella de mar. Juntos cazan medusas, soplan burbujas y se meten en líos que siempre acaban bien.</p></li>
+      <li><h3>Un héroe sin capa</h3><p>Aunque a veces moleste a Calamardo, la bondad de Bob termina ayudando a todo Fondo de Bikini. Esa es su verdadera fórmula secreta.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== AMIGOS (las tarjetas las crea script.js) ===== -->
+<section id="amigos">
+  <div class="wrap">
+    <h2>Sus amigos</h2>
+    <p class="lead">Busca a un personaje por su nombre y se resaltará su tarjeta.</p>
+    <label for="buscar" class="narrow">Buscar amigo</label>
+    <input id="buscar" type="text" class="narrow" placeholder="Escribe: Patricio, Calamardo, Arenita…" autocomplete="off">
+    <div class="grid" id="friends"></div>
+  </div>
+</section>
+
+<!-- ===== JUEGOS ===== -->
+<section id="jugar" class="sand">
+  <div class="wrap">
+    <h2>Juega con Bob</h2>
+    <div class="panel">
+      <div class="box">
+        <h3>¿Qué te diría Bob?</h3>
+        <label for="nombre">Tu nombre</label>
+        <input id="nombre" type="text" placeholder="Por ejemplo: Valeria" autocomplete="off">
+        <div class="actions">
+          <button type="button" id="saludar">Saludar</button>
+          <button type="button" class="alt" id="frase">Otra frase</button>
+        </div>
+        <div class="out quote" id="salida" aria-live="polite">Escribe tu nombre y pulsa «Saludar».</div>
+      </div>
+      <div class="box">
+        <h3>Contador de cangreburgers</h3>
+        <label for="cuantas">¿Cuántas quieres pedir?</label>
+        <input id="cuantas" type="number" min="1" max="99" placeholder="Escribe un número del 1 al 99">
+        <div class="actions">
+          <button type="button" id="pedir">Pedir</button>
+          <button type="button" class="alt" id="limpiar">Limpiar</button>
+        </div>
+        <div class="out" id="pedido" aria-live="polite">Tu pedido aparecerá aquí.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section id="contacto">
+  <div class="wrap">
+    <h2>Escríbele a Bob</h2>
+    <div class="box contact-box">
+      <label for="correo">Tu correo</label>
+      <input id="correo" type="email" placeholder="tucorreo@ejemplo.com" autocomplete="off">
+      <label for="msg">Tu mensaje</label>
+      <textarea id="msg" rows="3" placeholder="Cuéntale a Bob cuál es tu cangreburger favorita…"></textarea>
+      <button type="button" id="enviar" class="send">Enviar mensaje</button>
+      <div class="out" id="estado" aria-live="polite">Aún no has enviado nada.</div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Interactividad -->
+<script src="script.js"></script>
+</body>
+</html>
