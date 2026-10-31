@@ -224,7 +224,6 @@ textarea:focus-visible {
 .hero h1 {
   font-size: clamp(2.6rem, 8vw, 5rem);
   color: var(--deep);
-  transform: rotate(-180deg);
 }
 
 .hero p {
@@ -302,7 +301,7 @@ textarea:focus-visible {
 }
 
 .friend:hover {
-  transform: rotate(-180deg) scale(1.02);
+  transform: rotate(-1.5deg) scale(1.02);
 }
 
 /* Tarjeta resaltada por el buscador */
